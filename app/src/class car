@@ -1,0 +1,39 @@
+enum class Color {
+    RED, GREEN, BLUE, YELLOW, ORANGE
+}
+
+class Car(
+    val model: String, 
+    var speed: Int, 
+    var gas: Int,
+    val color: Color
+) {
+    // 클래스 속성 (프로퍼티)
+    // model, speed, gas는 객체 생성 시 초기화됩니다.
+    // color는 열거형으로 초기화됩니다.
+
+    // 메서드 (함수)
+    fun getSpeeds(): String {
+        return "Current speed: $speed km/h"
+    }
+
+    fun increaseSpeed(increment: Int) {
+        speed += increment
+        println("Speed increased by $increment km/h. New speed: $speed km/h")
+    }
+    
+    fun addGas(newGas: Int) {
+        gas += newGas
+        println("$newGas liters of gas added. Total gas level: $gas liters")
+    }
+    
+}
+
+fun main() {
+    val myCar = Car("Tayo Bus", 0, 50, Color.BLUE) // 브랜드는 "Tayo Bus", 초기 속도는 0 km/h, 초기 연료는 50 liters, 색상은 파란색
+    println(myCar.getSpeeds()) // 현재 속도 출력
+    myCar.increaseSpeed(30) // 속도를 30 km/h 증가
+    myCar.addGas(20) // 연료 20 liters 추가
+    println("Car color: ${myCar.color}")
+}
+
