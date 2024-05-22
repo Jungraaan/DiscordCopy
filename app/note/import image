@@ -1,1 +1,39 @@
+@Composable
+fun MainScreen() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(30.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.SpaceEvenly
+    ) {
+        var imageId by remember {
+            mutableIntStateOf(R.drawable.ic_launcher_background)
+        }
+        Image(
+            painter = painterResource(id = imageId),
+            contentDescription = null,
+            modifier = Modifier
+                .size(300.dp)
+                .clip(RoundedCornerShape(80.dp))
+        )
 
+        Button(
+            onClick = {
+                if (imageId == R.drawable.ic_launcher_background) {
+                    imageId = R.drawable.ic_launcher_foreground
+                } else {
+                    imageId = R.drawable.ic_launcher_background
+                }
+            },
+            modifier = Modifier
+                .width(200.dp)
+                .height(50.dp),
+            shape = CutCornerShape(30f)
+
+        ) {
+            Text(text = "변경")
+
+        }
+    }
+}
