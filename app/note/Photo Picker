@@ -1,0 +1,40 @@
+@Composable
+fun MainScreen() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(30.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.SpaceEvenly
+    ) {
+        var imageId by remember {
+            mutableIntStateOf(R.drawable.ic_launcher_background)
+        }
+        // Registers a photo picker activity launcher in single-select mode.
+        val pickMedia = rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
+
+        }
+        Image(
+            painter = painterResource(id = imageId),
+            contentDescription = null,
+            modifier = Modifier
+                .size(300.dp)
+                .clip(RoundedCornerShape(80.dp))
+        )
+
+        Button(
+            onClick = { // 버튼 클릭 시, 이미지 변경
+                pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+
+            },
+            modifier = Modifier
+                .width(200.dp)
+                .height(50.dp),
+            shape = CutCornerShape(30f)
+
+        ) {
+            Text(text = "변경")
+
+        }
+    }
+}
