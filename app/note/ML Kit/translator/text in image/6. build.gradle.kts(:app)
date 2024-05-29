@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.mlkit2"
+    namespace = "com.example.mlkit3"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.mlkit2"
+        applicationId = "com.example.mlkit3"
         minSdk = 28
         targetSdk = 34
         versionCode = 1
@@ -59,6 +59,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.camera.core)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -66,5 +67,19 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    implementation("com.google.mlkit:translate:17.0.2")
+    // To recognize Latin script
+    implementation("com.google.mlkit:text-recognition:16.0.0")
+
+    // To recognize Chinese script
+    implementation("com.google.mlkit:text-recognition-chinese:16.0.0")
+
+    // To recognize Devanagari script
+    implementation("com.google.mlkit:text-recognition-devanagari:16.0.0")
+
+    // To recognize Japanese script
+    implementation("com.google.mlkit:text-recognition-japanese:16.0.0")
+
+    // To recognize Korean script
+    implementation("com.google.mlkit:text-recognition-korean:16.0.0")
+
 }
